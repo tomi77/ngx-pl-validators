@@ -19,6 +19,7 @@ module.exports = function (config) {
           compilerOptions: {
               emitDecoratorMetadata: true,
               experimentalDecorators: true,
+              allowSyntheticDefaultImports: true,
               module: "commonjs",
               sourceMap: true,
               target: "ES5",

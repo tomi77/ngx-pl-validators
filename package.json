@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/tomi77/ngx-pl-validators",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash.zip": "^4.2.0"
   },
   "peerDependencies": {
     "@angular/common": ">= 2.0.0",
@@ -38,6 +38,7 @@
     "@angular/platform-browser": "^7.0.0",
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@types/jasmine": "2.8.8",
+    "@types/lodash.zip": "^4.2.4",
     "@types/node": "^10.9.4",
     "codelyzer": "^4.2.1",
     "jasmine-core": "3.2.1",
