@@ -1,6 +1,9 @@
 # ngx-pl-validators
 
 [![Build Status](https://travis-ci.org/tomi77/ngx-pl-validators.svg?branch=master)](https://travis-ci.org/tomi77/ngx-pl-validators)
+[![dependencies Status](https://david-dm.org/tomi77/ngx-pl-validators/status.svg)](https://david-dm.org/tomi77/ngx-pl-validators)
+[![devDependencies Status](https://david-dm.org/tomi77/ngx-pl-validators/dev-status.svg)](https://david-dm.org/tomi77/ngx-pl-validators?type=dev)
+[![peerDependencies Status](https://david-dm.org/tomi77/ngx-pl-validators/peer-status.svg)](https://david-dm.org/tomi77/ngx-pl-validators?type=peer)
 
 PESEL, NIP and REGON validators for Angular
 
