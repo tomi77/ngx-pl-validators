@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 const WEIGHTS: number[] = [6, 5, 7, 2, 3, 4, 5, 6, 7];
-const MODULE_VALUES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const MODULE_VALUES: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 export const nipValidator: (control: AbstractControl) => ValidationErrors | null = (control: AbstractControl): ValidationErrors | null => {
   if (!control.value || control.value.length === 0) {
@@ -9,7 +9,9 @@ export const nipValidator: (control: AbstractControl) => ValidationErrors | null
   if (['0000000000'].includes(control.value)) {
     return { nip: control.value };
   }
-
+  if (control.value.length !== 10) {
+    return { nip: control.value };
+  }
   const isNipValid: boolean = checkNip(`${control.value}`);
 
   return !isNipValid ? { nip: control.value } : null;
