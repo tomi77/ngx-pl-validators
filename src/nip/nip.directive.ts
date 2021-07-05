@@ -1,9 +1,9 @@
-import { Directive, Input } from "@angular/core";
-import { AbstractControl, NG_VALIDATORS, Validator } from "@angular/forms";
-import { nipValidator } from "./nip-validator";
+import { Directive, Input } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
+import { nipValidator } from './nip-validator';
 
 @Directive({
-  selector: "[nip][formControlName],[nip][formControl],[nip][ngModel]",
+  selector: '[nip][formControlName],[nip][formControl],[nip][ngModel]',
   providers: [
     {
       provide: NG_VALIDATORS,
