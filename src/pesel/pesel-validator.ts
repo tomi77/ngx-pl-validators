@@ -1,34 +1,36 @@
-import { AbstractControl } from "@angular/forms";
-import zip from "lodash.zip";
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-const WEIGHTS = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
-const MODULE_VALUES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const WEIGHTS: number[] = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
+const MODULE_VALUES: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export function peselValidator(
-  control: AbstractControl
-): { [key: string]: string } {
-  let value: string = control.value;
-  if (value.trim() === "") {
-    value = null;
+export const peselValidator: (control: AbstractControl) => ValidationErrors | null = (control: AbstractControl):
+  ValidationErrors | null => {
+  if (!control.value || control.value.length === 0) {
+    return null;
   }
-  if (value == null) {
-    return;
+  if (['00000000000'].includes(control.value)) {
+    return {pesel: control.value};
   }
-  value = value.replace(/[\s-]/g, "");
-  if (["00000000000"].includes(value)) {
-    return { pesel: control.value };
-  }
-  const values: string[] = value.split("");
-  if (values.length !== 11) {
-    return { pesel: control.value };
-  }
-  const ctrl = values.pop();
-  const sum = zip(values, WEIGHTS).reduce(
-    (memo: number, val: [string, number]) => memo + val[1] * +val[0],
-    0
-  );
-  value = "" + MODULE_VALUES[sum % MODULE_VALUES.length];
-  if (value !== ctrl) {
-    return { pesel: control.value };
-  }
-}
+
+  return !checkPesel(`${control.value}`) ? {pesel: control.value} : null;
+};
+
+const checkPesel: (peselInput: string) => boolean = (peselInput: string): boolean => {
+  const peselDigits: number[] = peselInput.split('').map(Number);
+  const checksum: number = peselDigits.pop();
+
+  const peselReducer: (accumulator: number, currentValue: number, index: number, array: number[]) => number = (
+    accumulator: number,
+    currentValue: number,
+    index: number,
+    array: number[]
+  ): number => {
+    return accumulator + array[index] * WEIGHTS[index];
+  };
+
+  const sum: number = peselDigits.reduce(peselReducer, 0);
+
+  const peselMod11: number = MODULE_VALUES[sum % MODULE_VALUES.length];
+
+  return peselMod11 === checksum;
+};

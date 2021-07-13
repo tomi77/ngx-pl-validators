@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { NipValidatorDirective } from "./nip/nip.directive";
-import { PeselValidatorDirective } from "./pesel/pesel.directive";
+import { NgModule } from '@angular/core';
+import { NipValidatorDirective } from './nip/nip.directive';
+import { PeselValidatorDirective } from './pesel/pesel.directive';
 
 @NgModule({
   declarations: [PeselValidatorDirective, NipValidatorDirective],
