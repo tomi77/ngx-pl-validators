@@ -1,6 +1,6 @@
 {
   "name": "ngx-pl-validators",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PESEL, NIP and REGON validators for Angular",
   "scripts": {
     "test": "karma start",
