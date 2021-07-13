@@ -8,6 +8,9 @@ export const peselValidator: (control: AbstractControl) => ValidationErrors | nu
   if (!control.value || control.value.length === 0) {
     return null;
   }
+  if (control.value.length !== 11) {
+    return {pesel: control.value};
+  }
   if (['00000000000'].includes(control.value)) {
     return {pesel: control.value};
   }
